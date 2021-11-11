@@ -19,7 +19,7 @@ function getPost(){
 
 function addPost(){
     //const addPostsApi = "https://localhost:5001/api/post";
-    const allPostsApi = "https://abrush60-pa4api.herokuapp.com/api/Post";
+    const addPostsApi = "https://abrush60-pa4api.herokuapp.com/api/Post";
     const postText = document.getElementById("text").value;
     
     fetch(addPostsApi, {
