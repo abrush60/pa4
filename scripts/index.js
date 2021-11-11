@@ -1,5 +1,6 @@
 function getPost(){
-    const allPostsApi = "https://localhost:5001/api/post";
+    //const allPostsApi = "https://localhost:5001/api/post";
+    const allPostsApi = "https://abrush60-pa4api.herokuapp.com/api/Post";
 
     fetch(allPostsApi).then(function(response){
         console.log(response);
