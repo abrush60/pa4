@@ -1,24 +1,17 @@
-var tweets = ["Hey its Big Al", "Me Again", "42-21"];
+function getPost(){
+    const allPostsApi = "https://localhost:5001/api/post";
 
-function setGreets(){
-    var html = "<ul>";
-
-    tweets.forEach((tweet)=>{
-    "<li><div class=\"avatar\"></div><span>" + tweet + "</span></li>";
+    fetch(allPostsApi).then(function(response){
+        console.log(response);
+        return response.json();
+    }).then(function(json){
+        let html = "<ul>";
+        json.forEach((post)=>{
+            html += "<li>" + post.text + " Posted by Big Al! </li>";
+        })
+        html += "</ul>";
+        document.getElementById("Post").innerHTML = html;
+    }).catch(function(error){
+        console.log(error);
     });
-    html += "</ul>";
-}
-
-function handleOnLoad(){
-    setGreets();
-}
-
-addPost = function(){
-    let postText = document.getElementById("post").value;
-    tweets.push(postText);
-    setGreets();
-}
-
-function handleOnSubmit(){
-    addPost();
 }
