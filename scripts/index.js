@@ -1,6 +1,9 @@
+const baseUrl = "https://abrush60-pa4api.herokuapp.com/api/Post"
+//const baseUrl = "https://localhost:5001/api/post"
+
 function getPost(){
     //const allPostsApi = "https://localhost:5001/api/post";
-    const allPostsApi = "https://abrush60-pa4api.herokuapp.com/api/Post";
+    const allPostsApi = baseUrl;
 
     fetch(allPostsApi).then(function(response){
         console.log(response);
@@ -17,23 +20,30 @@ function getPost(){
     });
 }
 
-function addPost(){
+function handleOnSubmit(){
+    console.log("We made it");
+    var postText = document.getElementById("text").value;
+    //const placeHolder = document.getElementById("Nothing").value;
     //const addPostsApi = "https://localhost:5001/api/post";
-    const addPostsApi = "https://abrush60-pa4api.herokuapp.com/api/Post";
-    const postText = document.getElementById("text").value;
-    
-    fetch(addPostsApi, {
+    const addPostsApi = baseUrl;
+    var text ={
+        Text: postText
+    }
+
+    PlacePost(text);
+}
+
+function PlacePost(text){
+    const PlacePostUrl = baseUrl;
+
+    fetch(PlacePostUrl, {
         method: "POST",
         headers: {
-            "Accept": 'application/json',
-            "Content-Type": 'application/json'
+            "Accept": "application/json",
+            "Content": "application/json"
         },
-        body : JSON.stringify({
-            text: postText
-        })
-    })
-    .then((response)=>{
-        console.log(response)
+        body: JSON.stringify(text)
+    }).then(response=>{
         getPost();
     })
 }
