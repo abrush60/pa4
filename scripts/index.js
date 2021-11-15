@@ -1,4 +1,4 @@
-const baseUrl = "https://abrush60-pa4api.herokuapp.com/api/Post"
+const baseUrl = "https://abrush60-pa4api.herokuapp.com/api/Post/"
 //const baseUrl = "https://localhost:5001/api/post"
 //update
 function getPost(){
@@ -50,7 +50,6 @@ function handleOnEnter(){
 
 function PlacePost(text){
     const PlacePostUrl = baseUrl;
-
     fetch(PlacePostUrl, {
         method: "POST",
         headers: {
@@ -70,7 +69,7 @@ function RemovePost(id){
         method: "PUT",
         headers: {
             "Accept":'application/json',
-            "Content-Type": 'application/json' 
+            "Content-Type": 'application/json; charset=UTF-8' 
         },
         body: JSON.stringify(id)
     }).then(response=>{
