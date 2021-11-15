@@ -25,12 +25,27 @@ function handleOnSubmit(){
     var postText = document.getElementById("text").value;
     //const placeHolder = document.getElementById("Nothing").value;
     //const addPostsApi = "https://localhost:5001/api/post";
+    console.log(postText);
     const addPostsApi = baseUrl;
-    var text ={
+    var text ={ 
         Text: postText
     }
 
     PlacePost(text);
+}
+
+function handleOnEnter(){
+    console.log("We made it");
+    var postId = document.getElementById("id").value;
+    //const placeHolder = document.getElementById("Nothing").value;
+    //const addPostsApi = "https://localhost:5001/api/post";
+    console.log(postId);
+    const addPostsApi = baseUrl;
+    var id ={ 
+        Text: postId
+    }
+
+    RemovePost(postId);
 }
 
 function PlacePost(text){
@@ -39,10 +54,25 @@ function PlacePost(text){
     fetch(PlacePostUrl, {
         method: "POST",
         headers: {
-            "Accept": "application/json",
-            "Content": "application/json"
+            "Accept": 'application/json',
+            "Content-Type": 'application/json'
         },
         body: JSON.stringify(text)
+    }).then(response=>{
+        getPost();
+    })
+}
+
+function RemovePost(id){
+    const RemovePostUrl = baseUrl;
+
+    fetch(RemovePostUrl, {
+        method: "PUT",
+        headers: {
+            "Accept":'application/json',
+            "Content-Type": 'application/json' 
+        },
+        body: JSON.stringify(id)
     }).then(response=>{
         getPost();
     })
